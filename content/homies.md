@@ -4,6 +4,8 @@ draft = false
 title = 'homies'
 +++
 
+This is an attempt to collect cool stuff people are doing in our area. If you have suggestions to add, please [contact us](/contact). The goal is to make this editable by homies like you, but we're not that smart yet.
+
 {{< details title="Art" >}}
 - [Fred](https://www.instagram.com/fred_hjertstedt_3rd/) - Recycled skateboard wizard
 - [Hans](https://www.instagram.com/mmmm_mostaccioli/) - Paint marker wizard
