@@ -1,0 +1,6 @@
+<details>
+  <summary>{{ .Get "title" }}</summary>
+  <div class="accordion-content">
+    {{ .Inner | markdownify }}
+  </div>
+</details>
