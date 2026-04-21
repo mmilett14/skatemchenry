@@ -6,13 +6,15 @@ title = 'skaturday'
 
 
 
-## Saturday, April 18
+## Saturday, April 25
 
 **📍 Ryan Buss Zone Skatepark** — McHenry, IL
 
-We're at home base this Saturday. 10am til 2 ish.
+We're at home base this Saturday. 9am til 2 ish.
 
-All ages and skill levels welcome — come skate with us!
+This week, [Scour the Earth](https://www.instagram.com/scour.earth/) is coming from Dekalb to lead a litter pickup at & around the skatepark, starting at 10am.
+
+All ages and skill levels welcome — come hang with us!
 
 **Free coffee provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
