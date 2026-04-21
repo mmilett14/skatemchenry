@@ -1,3 +1,21 @@
-<div style="overflow: auto; -webkit-overflow-scrolling: touch; width: 100%; height: {{ .Get "height" | default "800px" }};">
-  <iframe src="{{ .Get "src" }}" style="width: 100%; height: 100%; border: none;"></iframe>
+<div class="pdf-embed">
+  <iframe class="pdf-desktop" src="{{ .Get "src" }}" style="width: 100%; height: {{ .Get "height" | default "800px" }}; border: none;"></iframe>
+  <a class="pdf-mobile" href="{{ .Get "src" }}" target="_blank" rel="noopener">
+    Tap to open PDF
+  </a>
 </div>
+
+<style>
+.pdf-mobile { display: none; }
+
+@media (max-width: 768px) {
+  .pdf-desktop { display: none; }
+  .pdf-mobile {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+  }
+}
+</style>
