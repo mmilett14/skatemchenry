@@ -1,0 +1,8 @@
+.menu__dropdown {
+  min-width: max-content;
+}
+
+.menu__dropdown > li a {
+  white-space: nowrap;
+  word-break: normal;
+}
