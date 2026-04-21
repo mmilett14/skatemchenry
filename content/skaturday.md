@@ -18,6 +18,7 @@ All ages and skill levels welcome — come hang with us!
 
 **Free coffee provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
-![skaturday poster](/images/skaturday_poster.png)
+![skaturday poster](/images/skaturday_poster.PNG)
+Poster by [Hans](https://www.instagram.com/mmmm_mostaccioli/)
 
 ---
