@@ -10,7 +10,7 @@ title = 'skaturday'
 
 **📍 Ryan Buss Zone Skatepark** — McHenry, IL
 
-We're at home base this Saturday. 9am til 2 ish.
+We're at home base this Saturday. 8am til 2 ish.
 
 This week, [Scour the Earth](https://www.instagram.com/scour.earth/) is coming from Dekalb to lead a litter pickup at & around the skatepark, starting at 10am.
 
