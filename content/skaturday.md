@@ -6,19 +6,17 @@ title = 'skaturday'
 
 
 
-## Saturday, April 25
+## Saturday, May 2
 
-**📍 Ryan Buss Zone Skatepark** — McHenry, IL
+**📍 Lions Park** — Cary, IL
 
-We're at home base this Saturday. 8am til 2 ish.
+We're heading out for the Cary Classic this Skaturday. 8am til 2 ish.
 
-This week, [Scour the Earth](https://www.instagram.com/scour.earth/) is coming from Dekalb to lead a litter pickup at & around the skatepark, starting at 10am.
-
-All ages and skill levels welcome — come hang with us!
+All ages and skill levels welcome — come skate with us!
 
 **Free coffee provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
 ![skaturday poster](/images/skaturday_poster.PNG)
-Poster by [Hans](https://www.instagram.com/mmmm_mostaccioli/)
+Poster by [Hans Bermann](https://www.instagram.com/mmmm_mostaccioli/)
 
 ---
