@@ -6,11 +6,11 @@ title = 'skaturday'
 
 
 
-## Saturday, May 2
+## Saturday, May 9
 
-**📍 Lions Park** — Cary, IL
+**📍 Ryan Buss Zone Skatepark** — McHenry, IL
 
-We're heading out for the Cary Classic this Skaturday. 8am til 2 ish.
+Home sweet home this Skaturday. 8am til 2 ish.
 
 All ages and skill levels welcome — come skate with us!
 
