@@ -6,7 +6,7 @@ title = 'skaturday'
 
 
 
-## Saturday, May 9
+## Saturday, May 23
 
 **📍 Ryan Buss Zone Skatepark** — McHenry, IL
 
