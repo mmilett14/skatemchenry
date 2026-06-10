@@ -1,0 +1,72 @@
+# Decap CMS config — https://decapcms.org/docs/configuration-options/
+#
+# Backend: GitHub OAuth via a Cloudflare Worker proxy.
+# You'll need to deploy a small OAuth worker (sketch in a comment at the
+# bottom of this file) and set base_url to its URL.
+
+backend:
+  name: github
+  repo: mmilett14/skatemchenry          # <-- confirm/replace with your repo slug
+  branch: main
+  base_url: https://YOUR-OAUTH-WORKER.workers.dev   # <-- set after deploying the worker
+  auth_endpoint: /auth
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+# Open editorial workflow = drafts go through PRs instead of committing
+# straight to main. Safer for a multi-editor wiki/blog.
+publish_mode: editorial_workflow
+
+collections:
+  # ---------- BLOG ----------
+  - name: "blog"
+    label: "Blog posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: "title",  label: "Title",  widget: "string" }
+      - { name: "date",   label: "Date",   widget: "datetime" }
+      - { name: "author", label: "Author", widget: "string" }
+      - { name: "draft",  label: "Draft?", widget: "boolean", default: true }
+      - { name: "body",   label: "Body",   widget: "markdown" }
+
+  # ---------- HOMIES (single-file edit, simplest) ----------
+  # Editors get one big markdown form for the whole page.
+  # Pro: zero content restructuring. Con: shortcodes are visible/fragile.
+  - name: "homies"
+    label: "Homies wiki"
+    files:
+      - name: "homies"
+        label: "Homies page"
+        file: "content/homies.md"
+        fields:
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "draft", label: "Draft?", widget: "boolean", default: false }
+          - { name: "body",  label: "Body",  widget: "markdown" }
+
+  # ---------- HOMIES (structured, nicer for editors — opt-in) ----------
+  # Uncomment after splitting homies.md into one file per entry under
+  # content/homies-entries/ and adding a list template that groups by category.
+  #
+  # - name: "homie-entries"
+  #   label: "Homie entries"
+  #   folder: "content/homies-entries"
+  #   create: true
+  #   fields:
+  #     - { name: "name",        label: "Name",        widget: "string" }
+  #     - { name: "category",    label: "Category",    widget: "select",
+  #         options: ["Art","Boards & Stuff","Coffee","Nonprofits","Shops","Tunes","Zines"] }
+  #     - { name: "locality",    label: "Locality",    widget: "select",
+  #         options: ["Local","Local-ish"], default: "Local" }
+  #     - { name: "location",    label: "Location",    widget: "string", required: false }
+  #     - { name: "url",         label: "Link",        widget: "string", required: false }
+  #     - { name: "description", label: "Description", widget: "text",   required: false }
+
+# ----------------------------------------------------------------------
+# OAuth worker (deploy separately under functions/ or as its own worker):
+# Recommended: https://github.com/i40west/netlify-cms-cloudflare-pages
+# (works for Decap too; just a tiny GitHub OAuth proxy).
+# Set GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET as worker secrets.
+# ----------------------------------------------------------------------

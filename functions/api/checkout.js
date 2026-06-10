@@ -1,0 +1,62 @@
+export async function onRequestPost({ request, env }) {
+  const origin = request.headers.get("origin") || "https://skatemchenry.org";
+
+  try {
+    const { cart } = await request.json();
+
+    if (!cart || cart.length === 0) {
+      return json({ error: "Cart is empty" }, 400, origin);
+    }
+
+    const body = new URLSearchParams();
+    body.append("mode", "payment");
+    body.append("success_url", `${origin}/store-success/`);
+    body.append("cancel_url", `${origin}/store/`);
+
+    cart.forEach((item, i) => {
+      body.append(`line_items[${i}][price_data][currency]`, "usd");
+      body.append(`line_items[${i}][price_data][product_data][name]`, item.name);
+      body.append(`line_items[${i}][price_data][unit_amount]`, String(item.price));
+      body.append(`line_items[${i}][quantity]`, String(item.quantity));
+    });
+
+    const res = await fetch("https://api.stripe.com/v1/checkout/sessions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.STRIPE_SECRET_KEY}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body,
+    });
+
+    const session = await res.json();
+
+    if (!res.ok) {
+      return json({ error: session.error?.message || "Stripe error" }, 500, origin);
+    }
+
+    return json({ url: session.url }, 200, origin);
+  } catch (err) {
+    return json({ error: "Server error" }, 500, origin);
+  }
+}
+
+function json(data, status, origin) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": origin,
+    },
+  });
+}
+
+export async function onRequestOptions() {
+  return new Response(null, {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+    },
+  });
+}
