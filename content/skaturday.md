@@ -6,10 +6,12 @@ title = 'skaturday'
 
 
 
-## Saturday, June 6
+## Saturday, June 13
 
 **📍 Ryan Buss Zone Skatepark - McHenry, IL** 
 Home sweet home this Saturday! 9am - 2ish.
+
+Special Event - Heart of the Fox with Miles Canevello from 11-1!
 
 **Free coffee provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
