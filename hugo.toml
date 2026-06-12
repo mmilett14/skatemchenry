@@ -116,7 +116,17 @@ pagination.pagerSize = 5
           url = "/lippold"
           weight = 4
         [[languages.en.menu.main]]
+          identifier = "store"
+          name = "store"
+          url = "/store"
+          weight = 5
+        [[languages.en.menu.main]]
+          identifier = "cart"
+          name = "cart"
+          url = "/cart"
+          weight = 6
+        [[languages.en.menu.main]]
           identifier = "contact"
           name = "contact"
           url = "/contact"
-          weight = 5
+          weight = 7

@@ -1,0 +1,217 @@
+{{ define "main" }}
+<article class="post">
+  <div class="store-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    <a href="/cart/" class="store-cart-link">cart (<span id="cart-count">0</span>)</a>
+  </div>
+
+  {{ with .Content }}
+  <div class="store-blurb">{{ . }}</div>
+  {{ end }}
+
+  <div class="store-grid">
+    {{ range .Params.products }}
+    <div class="store-product"{{ if .images }} data-images='{{ .images | jsonify }}'{{ end }}>
+      {{ if .image }}
+      <img src="{{ .image }}" alt="{{ .name }}" class="store-product-img">
+      {{ else }}
+      <div class="store-product-placeholder">[no image]</div>
+      {{ end }}
+      <div class="store-product-info">
+        <h3>{{ .name }}</h3>
+        <p>{{ .description }}</p>
+        <span class="store-price">${{ div .price 100 }}.{{ mod .price 100 | printf "%02d" }}</span>
+      </div>
+      {{ if .options }}
+      <div class="store-options">
+        {{ range .options }}
+        <label class="store-option">
+          {{ .name }}
+          <select data-option="{{ .name }}">
+            {{ range .values }}
+            <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
+          </select>
+        </label>
+        {{ end }}
+      </div>
+      {{ end }}
+      <button
+        class="store-add-btn"
+        data-id="{{ .id }}"
+        data-name="{{ .name | htmlEscape }}"
+        data-price="{{ .price }}"
+        onclick="addToCart(this)"
+      >+ add to cart</button>
+    </div>
+    {{ end }}
+  </div>
+</article>
+
+<style>
+.store-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.store-header .post-title {
+  margin-bottom: 0;
+}
+
+.store-cart-link {
+  flex-shrink: 0;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  padding: 4px 12px;
+}
+
+.store-blurb {
+  margin: 0 0 10px;
+  color: color-mix(in srgb, var(--foreground) 75%, transparent);
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.store-product {
+  border: 2px solid var(--accent);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.store-product img {
+  border: none;
+  padding: 0;
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  margin: 0 0 12px;
+}
+
+.store-product-placeholder {
+  height: 280px;
+  border: 1px dashed color-mix(in srgb, var(--foreground) 30%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in srgb, var(--foreground) 40%, transparent);
+  margin-bottom: 12px;
+  font-size: calc(var(--font-size) * 0.85);
+}
+
+.store-product-info {
+  flex: 1;
+}
+
+.store-product-info h3 {
+  margin: 0 0 6px;
+  font-size: var(--font-size);
+}
+
+.store-product-info p {
+  margin: 0 0 8px;
+  font-size: calc(var(--font-size) * 0.85);
+  color: color-mix(in srgb, var(--foreground) 65%, transparent);
+}
+
+.store-price {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.store-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.store-option {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: calc(var(--font-size) * 0.85);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.store-option select {
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.store-add-btn {
+  margin-top: 14px;
+  width: 100%;
+}
+
+@media (max-width: 500px) {
+  .store-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+</style>
+
+<script src="{{ "js/cart.js" | absURL }}"></script>
+<script>
+(function () {
+  function addToCart(btn) {
+    const product = btn.closest(".store-product");
+    const baseId = btn.dataset.id;
+    const baseName = btn.dataset.name;
+    const price = parseInt(btn.dataset.price, 10);
+
+    const selects = product.querySelectorAll(".store-options select");
+    const optionValues = [];
+    const idParts = [baseId];
+    selects.forEach((select) => {
+      optionValues.push(select.value);
+      idParts.push(select.value);
+    });
+
+    const id = idParts.join("-");
+    const name = optionValues.length
+      ? `${baseName} (${optionValues.join(", ")})`
+      : baseName;
+
+    StoreCart.addItem(id, name, price);
+  }
+
+  function updateCartCount() {
+    document.getElementById("cart-count").textContent = StoreCart.count();
+  }
+
+  function initImageSwap() {
+    document.querySelectorAll(".store-product[data-images]").forEach((product) => {
+      const images = JSON.parse(product.dataset.images);
+      const img = product.querySelector(".store-product-img");
+      if (!img) return;
+      product.querySelectorAll(".store-options select").forEach((select) => {
+        select.addEventListener("change", () => {
+          if (images[select.value]) {
+            img.src = images[select.value];
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener("cart:updated", updateCartCount);
+
+  window.addToCart = addToCart;
+
+  updateCartCount();
+  initImageSwap();
+})();
+</script>
+{{ end }}

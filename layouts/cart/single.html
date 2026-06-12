@@ -1,0 +1,168 @@
+{{ define "main" }}
+<article class="post">
+  <h1 class="post-title">{{ .Title }}</h1>
+
+  <div id="cart-items"></div>
+
+  <div class="cart-footer hidden" id="cart-footer">
+    <span class="cart-total">total: <strong id="cart-total">$0.00</strong></span>
+    <button id="checkout-btn" onclick="checkout()">checkout &rarr;</button>
+  </div>
+
+  <p class="cart-empty-msg hidden" id="cart-empty">
+    your cart is empty. <a href="/store/">browse the store</a>
+  </p>
+</article>
+
+<style>
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 15%, transparent);
+  gap: 10px;
+}
+
+.cart-item-name {
+  flex: 1;
+  font-size: calc(var(--font-size) * 0.95);
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cart-qty-btn {
+  padding: 1px 8px;
+  border-width: 2px;
+  font-size: calc(var(--font-size) * 0.8);
+  line-height: 1.4;
+}
+
+.cart-item-price {
+  min-width: 70px;
+  text-align: right;
+  font-size: calc(var(--font-size) * 0.95);
+  color: var(--accent);
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  gap: 15px;
+}
+
+.cart-total {
+  font-size: calc(var(--font-size) * 1.05);
+}
+
+.cart-total strong {
+  color: var(--accent);
+}
+
+.cart-empty-msg {
+  color: color-mix(in srgb, var(--foreground) 50%, transparent);
+  font-style: italic;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 500px) {
+  .cart-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #checkout-btn {
+    width: 100%;
+  }
+}
+</style>
+
+<script src="{{ "js/cart.js" | absURL }}"></script>
+<script>
+(function () {
+  function render() {
+    const cart = StoreCart.getCart();
+    const items = Object.values(cart);
+    const itemsEl = document.getElementById("cart-items");
+    const footerEl = document.getElementById("cart-footer");
+    const emptyEl = document.getElementById("cart-empty");
+    const totalEl = document.getElementById("cart-total");
+
+    if (items.length === 0) {
+      itemsEl.innerHTML = "";
+      footerEl.classList.add("hidden");
+      emptyEl.classList.remove("hidden");
+      return;
+    }
+
+    footerEl.classList.remove("hidden");
+    emptyEl.classList.add("hidden");
+
+    let total = 0;
+    itemsEl.innerHTML = items
+      .map((item) => {
+        total += item.price * item.quantity;
+        const lineTotal = ((item.price * item.quantity) / 100).toFixed(2);
+        return `
+          <div class="cart-item">
+            <span class="cart-item-name">${escHtml(item.name)}</span>
+            <div class="cart-item-controls">
+              <button class="cart-qty-btn" onclick="window._cart.updateQty('${escHtml(item.id)}', -1)">-</button>
+              <span>${item.quantity}</span>
+              <button class="cart-qty-btn" onclick="window._cart.updateQty('${escHtml(item.id)}', 1)">+</button>
+            </div>
+            <span class="cart-item-price">$${lineTotal}</span>
+            <button class="cart-qty-btn" onclick="window._cart.removeItem('${escHtml(item.id)}')">x</button>
+          </div>`;
+      })
+      .join("");
+
+    totalEl.textContent = "$" + (total / 100).toFixed(2);
+  }
+
+  function updateQty(id, delta) {
+    StoreCart.updateQty(id, delta);
+    render();
+  }
+
+  function removeItem(id) {
+    StoreCart.removeItem(id);
+    render();
+  }
+
+  async function checkout() {
+    const btn = document.getElementById("checkout-btn");
+    btn.textContent = "loading...";
+    btn.disabled = true;
+    await StoreCart.checkout((err) => {
+      btn.textContent = "error — try again";
+      btn.disabled = false;
+      console.error(err);
+    });
+  }
+
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  window._cart = { updateQty, removeItem };
+  window.checkout = checkout;
+
+  render();
+})();
+</script>
+{{ end }}
