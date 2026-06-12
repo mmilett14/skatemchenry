@@ -151,6 +151,28 @@
 .store-add-btn {
   margin-top: 14px;
   width: 100%;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.store-add-btn--added {
+  background-color: var(--accent);
+  color: var(--background);
+}
+
+.store-cart-link--bump {
+  animation: cart-bump 0.3s ease;
+}
+
+@keyframes cart-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-cart-link--bump {
+    animation: none;
+  }
 }
 
 @media (max-width: 500px) {
@@ -185,10 +207,34 @@
       : baseName;
 
     StoreCart.addItem(id, name, price);
+    flashButton(btn);
+  }
+
+  function flashButton(btn) {
+    if (btn._resetText) {
+      clearTimeout(btn._flashTimer);
+    } else {
+      btn._resetText = btn.textContent;
+    }
+    btn.textContent = "✓ added to cart";
+    btn.classList.add("store-add-btn--added");
+    btn._flashTimer = setTimeout(() => {
+      btn.textContent = btn._resetText;
+      btn.classList.remove("store-add-btn--added");
+      btn._resetText = null;
+    }, 1200);
+  }
+
+  function setCartCount() {
+    document.getElementById("cart-count").textContent = StoreCart.count();
   }
 
   function updateCartCount() {
-    document.getElementById("cart-count").textContent = StoreCart.count();
+    setCartCount();
+    const link = document.querySelector(".store-cart-link");
+    link.classList.remove("store-cart-link--bump");
+    void link.offsetWidth;
+    link.classList.add("store-cart-link--bump");
   }
 
   function initImageSwap() {
@@ -210,7 +256,7 @@
 
   window.addToCart = addToCart;
 
-  updateCartCount();
+  setCartCount();
   initImageSwap();
 })();
 </script>
