@@ -4,7 +4,24 @@ const FULFILLMENT_OPTIONS = [
   { id: "pickup-warp-corps", label: "Pickup at Warp Corps in Woodstock", amount: 0 },
 ];
 
-export async function onRequestPost({ request, env }) {
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/api/checkout") {
+      if (request.method === "OPTIONS") {
+        return handleOptions();
+      }
+      if (request.method === "POST") {
+        return handleCheckout(request, env);
+      }
+    }
+
+    return env.ASSETS.fetch(request);
+  },
+};
+
+async function handleCheckout(request, env) {
   const origin = request.headers.get("origin") || "https://skatemchenry.org";
 
   try {
@@ -64,7 +81,7 @@ function json(data, status, origin) {
   });
 }
 
-export async function onRequestOptions() {
+function handleOptions() {
   return new Response(null, {
     headers: {
       "Access-Control-Allow-Origin": "*",
