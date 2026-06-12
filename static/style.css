@@ -6,3 +6,12 @@
   white-space: nowrap;
   word-break: normal;
 }
+
+/* Cap the group photo width on larger screens; full width on mobile */
+@media (min-width: 684px) {
+  img[src$="/images/group.png"] {
+    max-width: 450px;
+    height: auto;
+    display: block;
+  }
+}
