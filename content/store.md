@@ -58,6 +58,30 @@ products:
     options:
       - name: "size"
         values: ["S", "M", "L", "XL", "XXL"]
+  - id: "classic-youth-azalea"
+    name: "Youth Classic Logo T - Azalea"
+    price: 1800
+    description: "Classic Logo by Mikey Adams. Printed on Gildan Youth Heavy Cotton T by hand at Warp Corps."
+    image: "/images/shirts/youth_azalea.png"
+    options:
+      - name: "size"
+        values: ["XS", "S", "M", "L", "XL"]
+  - id: "classic-youth-graphite-heather"
+    name: "Youth Classic Logo T - Graphite Heather"
+    price: 1800
+    description: "Classic Logo by Mikey Adams. Printed on Gildan Youth Heavy Cotton T by hand at Warp Corps."
+    image: "/images/shirts/youth_graphite_heather.png"
+    options:
+      - name: "size"
+        values: ["XS", "S", "M", "L", "XL"]
+  - id: "classic-youth-safety-green"
+    name: "Youth Classic Logo T - Safety Green"
+    price: 1800
+    description: "Classic Logo by Mikey Adams. Printed on Gildan Youth Heavy Cotton T by hand at Warp Corps."
+    image: "/images/shirts/youth_safety_green.png"
+    options:
+      - name: "size"
+        values: ["XS", "S", "M", "L", "XL"]
 ---
 NOTE: To keep costs low, we are only doing pre-orders. Orders should be ready for pickup during the first week of July.
 
