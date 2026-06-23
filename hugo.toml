@@ -115,18 +115,19 @@ pagination.pagerSize = 5
           name = "lippold redesign"
           url = "/lippold"
           weight = 4
-        [[languages.en.menu.main]]
-          identifier = "store"
-          name = "store"
-          url = "/store"
-          weight = 5
-        [[languages.en.menu.main]]
-          identifier = "cart"
-          name = "cart"
-          url = "/cart"
-          weight = 6
+        # Temporarily hidden — uncomment to restore the store/cart nav links.
+        # [[languages.en.menu.main]]
+        #   identifier = "store"
+        #   name = "store"
+        #   url = "/store"
+        #   weight = 5
+        # [[languages.en.menu.main]]
+        #   identifier = "cart"
+        #   name = "cart"
+        #   url = "/cart"
+        #   weight = 6
         [[languages.en.menu.main]]
           identifier = "contact"
           name = "contact"
           url = "/contact"
-          weight = 7
+          weight = 5
