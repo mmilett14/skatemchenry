@@ -6,10 +6,10 @@ title = 'skaturday'
 
 
 
-## Saturday, June 20
+## Saturday, June 27
 
 **📍 Ryan Buss Zone Skatepark - McHenry, IL** 
-Home sweet home this Saturday! We'll be there 8am - 2ish to celebrate Go Skate Day Eve. Come rip!!
+Home sweet home this Saturday! We'll be there 8am - 2ish. Come rip!!
 
 **Free coffee provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
