@@ -8,6 +8,10 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.pathname === "/register" || url.pathname === "/register/") {
+      return Response.redirect("https://forms.gle/tpGDjhUdVLoBW2bv5", 302);
+    }
+
     if (url.pathname === "/api/checkout") {
       if (request.method === "OPTIONS") {
         return handleOptions();
