@@ -6,10 +6,10 @@ title = 'skaturday'
 
 
 
-## Saturday, July 25
+## Saturday, August 1
 
 **📍 Ryan Buss Zone Skatepark - McHenry, IL** 
-We'll be out at homebase this Saturday from 8am - 2ish. Come hang!!
+Come get ready for BUSS FEST!!! ...as long as the rain stays away.
 
 **Free coffee provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
