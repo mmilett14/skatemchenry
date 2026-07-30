@@ -14,7 +14,7 @@ pagination.pagerSize = 5
   contentTypeName = "posts"
 
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 5
+  showMenuItems = 6
 
   # show selector to switch language
   showLanguageSelector = false
@@ -101,20 +101,25 @@ pagination.pagerSize = 5
           url = "/"
           weight = 1
         [[languages.en.menu.main]]
+          identifier = "buss fest"
+          name = "buss fest"
+          url = "/buss-fest"
+          weight = 2
+        [[languages.en.menu.main]]
           identifier = "skaturday"
           name = "skaturday"
           url = "/skaturday"
-          weight = 2
+          weight = 3
         [[languages.en.menu.main]]
           identifier = "homies"
           name = "homies"
           url = "/homies"
-          weight = 3
+          weight = 4
         [[languages.en.menu.main]]
           identifier = "lippold redesign"
           name = "lippold redesign"
           url = "/lippold"
-          weight = 4
+          weight = 5
         # Temporarily hidden — uncomment to restore the store/cart nav links.
         # [[languages.en.menu.main]]
         #   identifier = "store"
@@ -130,4 +135,4 @@ pagination.pagerSize = 5
           identifier = "contact"
           name = "contact"
           url = "/contact"
-          weight = 5
+          weight = 6
