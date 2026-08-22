@@ -6,12 +6,12 @@ title = 'skaturday'
 
 
 
-## Saturday, August 8
+## Saturday, August 22
 
-**📍 Ryan Buss Zone Skatepark - McHenry, IL** 
-[BUSS FEST!!!](/buss-fest/)
+**📍 Sunset Skatepark - Lake in the Hills, IL** 
+COME RIP SUNSET!!! 8AM - 2 ISH.
 
-**Free coffee provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
+**Free cold brew provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
 ![skaturday poster](/images/skaturday_poster.PNG)
 Poster by [Hans Bermann](https://www.instagram.com/mmmm_mostaccioli/)
