@@ -6,10 +6,10 @@ title = 'skaturday'
 
 
 
-## Saturday, August 22
+## Saturday, September 5
 
-**📍 Sunset Skatepark - Lake in the Hills, IL** 
-COME RIP SUNSET!!! 8AM - 2 ISH.
+**📍 Ryan Buss Zone Skatepark - McHenry, IL** 
+SLAYBOR DAY SESH!! 8AM - 2 ISH.
 
 **Free cold brew provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
