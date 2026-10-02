@@ -6,12 +6,12 @@ title = 'skaturday'
 
 
 
-## Saturday, September 5
+## Saturday, October 3
 
 **📍 Ryan Buss Zone Skatepark - McHenry, IL** 
-SLAYBOR DAY SESH!! 8AM - 2 ISH.
+IT'S FALL YALL. Let's rip while the rippin is good. 9am - 1ish.
 
-**Free cold brew provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
+**Free coffee provided by the homies at [Heady Cup Coffee Roasters](https://headycup.com/).** They roast & brew right here in McHenry. Check em out!
 
 ![skaturday poster](/images/skaturday_poster.PNG)
 Poster by [Hans Bermann](https://www.instagram.com/mmmm_mostaccioli/)
